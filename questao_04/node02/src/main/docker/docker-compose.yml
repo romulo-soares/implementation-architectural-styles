@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - ./create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: questao04
+    ports:
+      - 5433:5432
+  mysql:
+    image: mysql
+    volumes:
+      - ./create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: default
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_DATABASE: questao04
+    ports:
+      - 3306:3306
